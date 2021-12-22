@@ -7,6 +7,14 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Roboto', sans-serif;
     margin:0;
     box-sizing: border-box;
+  };
+
+  body{
+    background-image: url("/background.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
   }
 `;
 
