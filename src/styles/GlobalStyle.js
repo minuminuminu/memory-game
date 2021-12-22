@@ -10,6 +10,8 @@ const GlobalStyle = createGlobalStyle`
   };
 
   body{
+    width:100vw;
+    height:100vh;
     background-image: url("/background.png");
     background-position: center;
     background-repeat: no-repeat;

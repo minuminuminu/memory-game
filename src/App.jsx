@@ -1,8 +1,7 @@
 import { Menu } from "./Components/Menu";
-import GlobalStyle from "./styles/GlobalStyle";
 import styled, { keyframes } from "styled-components";
 
-const transitionIn = keyframes`
+export const transitionIn = keyframes`
   from {
     opacity:0;
     transform: rotateY(-10deg);
@@ -14,19 +13,16 @@ const transitionIn = keyframes`
   }
 `;
 
-const FullBody = styled.div`
+export const FullBody = styled.div`
+  position: absolute;
   height: 100vh;
   width: 100vw;
-  animation: ${transitionIn} 0.75s;
+  animation: ${transitionIn} 1s;
+  z-index: -1;
 `;
 
 function App() {
-  return (
-    <FullBody>
-      <Menu />
-      <GlobalStyle />
-    </FullBody>
-  );
+  return <Menu />;
 }
 
 export default App;

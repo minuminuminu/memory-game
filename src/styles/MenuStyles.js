@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const MenuContainer = styled.div`
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -33,7 +33,7 @@ export const UI = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-top: 30vh;
+  margin-top: 40vh;
 `;
 
 export const HighScore = styled.h2`
@@ -47,7 +47,8 @@ export const PlayButton = styled.button`
   border-radius: 50px;
   background-color: #34e35a;
   border: 0;
-  margin: 5px;
+  margin-top: 15px;
+  font-weight: 500;
   transition: background-color 0.1s;
 
   &:hover {
@@ -61,7 +62,8 @@ export const SettingsButton = styled.button`
   border-radius: 50px;
   background-color: #afb1b3;
   border: 0;
-  margin: 5px;
+  margin: 10px;
+  font-weight: 500;
   transition: background-color 0.1s;
 
   &:hover {
