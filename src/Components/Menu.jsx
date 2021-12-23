@@ -9,12 +9,14 @@ import {
 } from "../styles/MenuStyles";
 import { useState } from "react";
 
-Modal.setAppElement("#root");
-
 export const Menu = () => {
   const [highScore, setHighScore] = useState(
     localStorage.getItem("high_score")
   );
+
+  let newHighScore = (highscore) => {
+    setHighScore(localStorage.setItem("high_score", highscore));
+  };
 
   return (
     <MenuContainer>
