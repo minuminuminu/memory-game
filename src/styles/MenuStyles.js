@@ -7,6 +7,7 @@ export const MenuContainer = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  position: absolute;
 `;
 
 export const HeaderContainer = styled.div`
@@ -52,11 +53,12 @@ export const PlayButton = styled.button`
   margin-top: 15px;
   font-size: 13px;
   font-weight: 500;
-  transition: background-color, font-size 0.2s;
+  transition: background-color, font-size 0.1s;
 
   &:hover {
     background-color: #37c456;
     font-size: 14px;
+    cursor: pointer;
   }
 `;
 
@@ -74,5 +76,6 @@ export const SettingsButton = styled.button`
   &:hover {
     background-color: #9da0a1;
     font-size: 14px;
+    cursor: pointer;
   }
 `;
