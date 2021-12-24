@@ -35,7 +35,7 @@ export const UI = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-top: 40vh;
+  margin-top: 50vh;
 `;
 
 export const HighScore = styled.h2`
@@ -52,7 +52,7 @@ export const PlayButton = styled.button`
   border: 0;
   margin-top: 15px;
   font-size: 13px;
-  font-weight: 500;
+  font-weight: 400;
   transition: background-color, font-size 0.1s;
 
   &:hover {
@@ -70,7 +70,7 @@ export const SettingsButton = styled.button`
   border: 0;
   margin: 10px;
   font-size: 13px;
-  font-weight: 500;
+  font-weight: 400;
   transition: background-color, font-size 0.1s;
 
   &:hover {

@@ -13,8 +13,6 @@ const transitionIn = keyframes`
 `;
 
 const GlobalStyle = createGlobalStyle`
-  @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&family=Rock+3D&display=swap');
-
   *{
     font-family: 'Roboto', sans-serif;
     margin:0;

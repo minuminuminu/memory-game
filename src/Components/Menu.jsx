@@ -7,12 +7,18 @@ import {
   SettingsButton,
   UI,
 } from "../styles/MenuStyles";
+import { SettingsModal } from "./SettingsModal";
 import { useState } from "react";
 
 export const Menu = () => {
   const [highScore, setHighScore] = useState(
     localStorage.getItem("high_score")
   );
+  const [modal, setModal] = useState(false);
+
+  const toggle = () => {
+    setModal(!modal);
+  };
 
   let newHighScore = (highscore) => {
     setHighScore(localStorage.setItem("high_score", highscore));
@@ -28,8 +34,9 @@ export const Menu = () => {
           BEST TIME: {highScore == null ? "???" : highScore}
         </HighScore>
         <PlayButton>PLAY</PlayButton>
-        <SettingsButton>SETTINGS</SettingsButton>
+        <SettingsButton onClick={() => toggle()}>SETTINGS</SettingsButton>
       </UI>
+      <SettingsModal modal={modal} close={toggle} />
     </MenuContainer>
   );
 };
