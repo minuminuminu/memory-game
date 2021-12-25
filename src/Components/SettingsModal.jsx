@@ -15,18 +15,6 @@ const transitionIn = keyframes`
   }
 `;
 
-const transitionOut = keyframes`
-  from {
-    opacity:1;
-    transform: rotateY(0);
-  }
-
-  to{
-    opacity:0;
-    transform:rotateY(-10deg)
-  }
-`;
-
 const ModalBackground = styled.div`
   width: 100vw;
   height: 100vh;
@@ -123,19 +111,14 @@ const CancelButton = styled.button`
 export const SettingsModal = (props) => {
   const { register, handleSubmit } = useForm();
 
-  let settings = {
-    cardAmount: 12,
-    time: 30000,
-    tries: "3",
-  };
-
   const onSubmit = (data) => {
-    settings = {
+    props.setSettings({
       cardAmount: parseInt(data.cardAmount),
       time: parseInt(data.time),
-      tries: data.cardAmount,
-    };
-    console.log(settings);
+      tries: data.tries,
+    });
+
+    props.close();
   };
 
   let cancel = () => {
@@ -173,7 +156,7 @@ export const SettingsModal = (props) => {
                   <select {...register("time")}>
                     <option value={30000}>30 sec</option>
                     <option value={60000}>1 min</option>
-                    <option value={"infinite"}>Endless</option>
+                    <option value={null}>Endless</option>
                   </select>
                 </Option>
               </Content>
