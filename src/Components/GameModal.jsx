@@ -54,19 +54,14 @@ const Timer = styled.div`
   justify-content: center;
   font-size: 70px;
   font-weight: 500;
-  /* background-color: #f3cccc; */
 `;
 
-const PictureRow = styled.div`
+const Cards = styled.div`
   width: 90%;
-  height: 22%;
-  display: flex;
-  flex-direction: row;
-  /* background-color: #cfcccc; */
-
-  & > * {
-    margin: auto;
-  }
+  height: 80%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
 `;
 
 const Images = styled.img`
@@ -83,8 +78,11 @@ const Images = styled.img`
 
 export const GameModal = (props) => {
   let exit = () => {
+    //add are u sure modal -> else return
     props.close();
   };
+
+  //add timer and state (false) -> onclick on images -> if state == false -> start timer and state = true
 
   return ReactDom.createPortal(
     <>
@@ -95,24 +93,11 @@ export const GameModal = (props) => {
         >
           <ModalContainer onClick={(e) => e.stopPropagation()}>
             <Timer>00:00:00</Timer>
-            <PictureRow>
-              <Images src="/isi.png" alt="" />
-              <Images src="/lucas.png" alt="" />
-              <Images src="/luis.png" alt="" />
-              <Images src="/tobi.png" alt="" />
-            </PictureRow>
-            <PictureRow>
-              <Images src="/isi.png" alt="" />
-              <Images src="/lucas.png" alt="" />
-              <Images src="/luis.png" alt="" />
-              <Images src="/tobi.png" alt="" />
-            </PictureRow>
-            <PictureRow>
-              <Images src="/isi.png" alt="" />
-              <Images src="/lucas.png" alt="" />
-              <Images src="/luis.png" alt="" />
-              <Images src="/tobi.png" alt="" />
-            </PictureRow>
+            <Cards>
+              {props.cardArray.map((e) => {
+                return <Images src={e.img} alt={e.name} key={e.id} />;
+              })}
+            </Cards>
           </ModalContainer>
         </ModalBackground>
       ) : null}
