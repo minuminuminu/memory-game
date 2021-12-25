@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { keyframes } from "styled-components";
 import ReactDom from "react-dom";
+import { useForm } from "react-hook-form";
 
 const transitionIn = keyframes`
   from {
@@ -17,7 +18,7 @@ const transitionIn = keyframes`
 const transitionOut = keyframes`
   from {
     opacity:1;
-    transform:rotateY(0);
+    transform: rotateY(0);
   }
 
   to{
@@ -48,14 +49,35 @@ const ModalContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
+  border-radius: 15px;
   background-color: #ffffff4b;
 `;
 
 const Content = styled.div`
-  width: 90%;
-  height: 65%;
+  width: 54vw;
+  height: 422.5px;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
   background-color: #c7c7c761;
+`;
+
+const Option = styled.div`
+  width: 90%;
+  height: 100px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+
+  & > * {
+    margin: 10px;
+  }
+`;
+
+const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 const Buttons = styled.div`
@@ -99,6 +121,23 @@ const CancelButton = styled.button`
 `;
 
 export const SettingsModal = (props) => {
+  const { register, handleSubmit } = useForm();
+
+  let settings = {
+    cardAmount: 12,
+    time: 30000,
+    tries: "3",
+  };
+
+  const onSubmit = (data) => {
+    settings = {
+      cardAmount: parseInt(data.cardAmount),
+      time: parseInt(data.time),
+      tries: data.cardAmount,
+    };
+    console.log(settings);
+  };
+
   let cancel = () => {
     props.close();
   };
@@ -111,11 +150,38 @@ export const SettingsModal = (props) => {
           loaded={props.modal ? true : false}
         >
           <ModalContainer onClick={(e) => e.stopPropagation()}>
-            <Content></Content>
-            <Buttons>
-              <SaveButton>Confirm Changes</SaveButton>
-              <CancelButton onClick={() => cancel()}>Cancel</CancelButton>
-            </Buttons>
+            <Form onSubmit={handleSubmit(onSubmit)}>
+              <Content>
+                <Option>
+                  Cards:
+                  <select {...register("cardAmount")}>
+                    <option value={12}>12</option>
+                    <option value={16}>16</option>
+                    <option value={20}>20</option>
+                  </select>
+                </Option>
+                <Option>
+                  Allowed Tries:
+                  <select {...register("tries")}>
+                    <option value={3}>3</option>
+                    <option value={2}>2</option>
+                    <option value={1}>1</option>
+                  </select>
+                </Option>
+                <Option>
+                  Time:
+                  <select {...register("time")}>
+                    <option value={30000}>30 sec</option>
+                    <option value={60000}>1 min</option>
+                    <option value={"infinite"}>Endless</option>
+                  </select>
+                </Option>
+              </Content>
+              <Buttons>
+                <SaveButton type="submit">CONFIRM CHANGES</SaveButton>
+                <CancelButton onClick={() => cancel()}>CANCEL</CancelButton>
+              </Buttons>
+            </Form>
           </ModalContainer>
         </ModalBackground>
       ) : null}
