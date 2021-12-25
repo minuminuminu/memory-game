@@ -30,15 +30,55 @@ const ModalBackground = styled.div`
 `;
 
 const ModalContainer = styled.div`
-  width: 75vw;
-  height: 85vh;
+  width: 80vw;
+  height: 90vh;
   margin-top: 5vh;
   position: absolute;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 15px;
+  flex-direction: column;
   background-color: #ffffff4b;
+
+  & > * {
+    margin: auto;
+  }
+`;
+
+const Timer = styled.div`
+  width: 90%;
+  height: 15%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 70px;
+  font-weight: 500;
+  /* background-color: #f3cccc; */
+`;
+
+const PictureRow = styled.div`
+  width: 90%;
+  height: 22%;
+  display: flex;
+  flex-direction: row;
+  /* background-color: #cfcccc; */
+
+  & > * {
+    margin: auto;
+  }
+`;
+
+const Images = styled.img`
+  width: 170px;
+  height: 170px;
+  border-radius: 10px;
+  transition: transform 0.2s;
+
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.03);
+  }
 `;
 
 export const GameModal = (props) => {
@@ -53,7 +93,27 @@ export const GameModal = (props) => {
           onClick={() => exit()}
           loaded={props.modal ? true : false}
         >
-          <ModalContainer onClick={(e) => e.stopPropagation()}></ModalContainer>
+          <ModalContainer onClick={(e) => e.stopPropagation()}>
+            <Timer>00:00:00</Timer>
+            <PictureRow>
+              <Images src="/isi.png" alt="" />
+              <Images src="/lucas.png" alt="" />
+              <Images src="/luis.png" alt="" />
+              <Images src="/tobi.png" alt="" />
+            </PictureRow>
+            <PictureRow>
+              <Images src="/isi.png" alt="" />
+              <Images src="/lucas.png" alt="" />
+              <Images src="/luis.png" alt="" />
+              <Images src="/tobi.png" alt="" />
+            </PictureRow>
+            <PictureRow>
+              <Images src="/isi.png" alt="" />
+              <Images src="/lucas.png" alt="" />
+              <Images src="/luis.png" alt="" />
+              <Images src="/tobi.png" alt="" />
+            </PictureRow>
+          </ModalContainer>
         </ModalBackground>
       ) : null}
     </>,
