@@ -26,7 +26,7 @@ const GlobalStyle = createGlobalStyle`
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    animation: ${transitionIn} 0.75s;
+    animation: ${transitionIn} 1.5s;
     position: relative;
   }
 `;
